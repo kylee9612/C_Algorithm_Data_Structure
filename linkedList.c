@@ -130,7 +130,11 @@ void deleteList(Node *ptr){
 
 void insertList(Node *ptr, int position, int data){
     Node* cur = ptr;
-    for(int i = 0 ; i <= position; i++){
+    for(int i = 1; i < position; i++){
         cur = cur->next;
     }
+    Node *newNode = malloc(sizeof(Node));
+    Node *next = cur->next;
+    cur->next = newNode;
+    newNode->next = next;
 }
