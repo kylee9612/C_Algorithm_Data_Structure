@@ -50,9 +50,9 @@ int main(){
         printf("10. Search In List\n");
         printf("11. Get List Length\n");
         printf("12. Exit\n");
-        printf("Choose Menu");
+        printf("Choose Menu : ");
         
-        int choice;
+        int choice; 
 
         scanf("%d",&choice);
         if(choice == 1){
@@ -137,4 +137,50 @@ void insertList(Node *ptr, int position, int data){
     Node *next = cur->next;
     cur->next = newNode;
     newNode->next = next;
+}
+
+void showListMemory(Node *ptr){
+    Node* cur = ptr;
+    int num = 0;
+    while(cur!=NULL){
+        cur = cur->next;
+        num += sizeof(cur);
+    }
+    printf("List memory : %d", num);
+}
+
+void swapNodeData(Node *ptr1, Node *ptr2){
+    int data = ptr1->data;
+    ptr1->data = ptr2->data;
+    ptr2->data = data;
+}
+
+void arrayToList(Node *ptr, int data[], int arrSize){
+    Node *cur = ptr;
+    while(cur->next != NULL){
+        cur = cur->next;
+    }
+
+    for(int i = 0; i < arrSize; i++){
+        Node *newNode = malloc(sizeof(Node));
+        newNode->data = data[i];
+        cur->next = newNode;
+        cur = newNode;
+    }
+}
+
+void bubbleSortData(Node* ptr){
+    Node* cur = ptr;
+    while(cur!=NULL){
+        Node* loop = cur;
+        int min = cur->data;
+        while(loop != NULL){
+            if(loop->data < min){
+                int temp = loop->data;
+                loop->data = min;
+                
+            }
+            loop = loop->next;
+        }
+    }
 }
